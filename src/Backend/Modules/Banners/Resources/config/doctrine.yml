@@ -1,0 +1,10 @@
+doctrine:
+  dbal:
+  orm:
+    mappings:
+      product:
+         type: annotation
+         is_bundle: false
+         dir: "%kernel.project_dir%/src/Backend/Modules/Asaf/Domain/Products"
+         alias: Product
+         prefix: Backend\Modules\Asaf\Domain\Products
