@@ -6,6 +6,7 @@ use Backend\Core\Engine\Authentication;
 use Backend\Core\Language\Locale;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use DateTime;
 
 /**
  *
@@ -69,9 +70,38 @@ class Banner
      */
     private $locale;
 
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime", name="date")
+     */
+    private $date;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime", name="created_on")
+     */
+    private $createdOn;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime", name="edited_on")
+     */
+    private $editedOn;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", name="creator_user_id")
+     */
+    private $creatorUserId;
+
 
     public function __construct(){
         $this->locale = Locale::workingLocale();
+        $this->date = new \DateTime();
     }
 
     /**
@@ -167,6 +197,16 @@ class Banner
         $this->image = $image;
     }
 
+    public function getCreatorUserId(): int
+    {
+        return $this->creatorUserId;
+    }
+
+    public function getEditorUserId(): int
+    {
+        return $this->editorUserId;
+    }
+
 
     /**
      * @return locale
@@ -188,12 +228,33 @@ class Banner
         $this->locale = $locale;
     }
 
+    public function getCreatedOn(): DateTime
+    {
+        return $this->createdOn;
+    }
+
+    public function getEditedOn(): DateTime
+    {
+        return $this->editedOn;
+    }
+
     /**
      * @ORM\PrePersist
      */
     public function prePersist()
     {
         $this->locale = $this->locale;
+        $this->createdOn = $this->editedOn = new DateTime();
+        $this->creatorUserId = $this->editorUserId = Authentication::getUser()->getUserId();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->editedOn = new DateTime();
+        $this->editorUserId = Authentication::getUser()->getUserId();
     }
 
 }

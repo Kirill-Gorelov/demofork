@@ -1,5 +1,6 @@
-{# Only include the BackendMediaGroupsHelper once #}
+{% import "Layout/Templates/macros.html.twig" as macro %}
 {% include "MediaLibrary/Resources/views/BackendMediaGroupsHelper.html.twig" %}
+{% form_theme form "Layout/Templates/FormLayout.html.twig" %}
 
 {{ form_start(form) }}
 <div class="row fork-module-content">
@@ -21,21 +22,16 @@
       <div role="tabpanel" class="tab-pane active" id="tabContent">
         <div class="row">
           {{ form_row(form.active) }}
-          {# {{ form_row(form.onMain) }}
           {{ form_row(form.title) }}
-          {{ form_row(form.category) }}
-          {{ form_row(form.image) }}
-          {{ form_widget(form.mediaGroup, {'mediaGroup': mediaGroup}) }}
+          {{ form_row(form.link) }}
           {{ form_row(form.description) }}
-          {{ form_row(form.text) }} #}
 
         </div>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="picture">
           <div class="row">
-            сам баннер
-            {# {{ form_row(form.meta) }} #}
+            {{ form_row(form.image) }}
           </div>
         </div>
 
@@ -46,7 +42,6 @@
               {# {{ form_row(form.meta) }} #}
             </div>
           </div>
-
     </div>
 
 
@@ -56,13 +51,16 @@
           <button type="button" class="btn btn-danger" id="blog-delete" data-toggle="modal"
                   data-target="#confirmDelete">
             <span class="fa fa-trash-o"></span>
-            Удалить
+            {{ 'lbl.Delete'|trans|ucfirst }}
           </button>
         </div>
       {% endif %}
+      <div class="btn-group pull-left" role="group">
+        {{ macro.buttonIcon( geturl('index'), 'plus-square', 'lbl.Cancel'|trans|ucfirst) }}
+      </div>
       <div class="btn-group pull-right" role="group">
         <button id="addButton" type="submit" name="add" class="btn btn-primary">
-          <span class="fa fa-plus-square"></span>Сохранить
+          <span class="fa fa-plus-square"></span>{{ 'lbl.Save'|trans|ucfirst }}
         </button>
       </div>
     </div>

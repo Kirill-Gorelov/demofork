@@ -27,12 +27,8 @@ class BannerDataGrid extends DataGridDatabase
         $this->setSortingColumns(['title']);
         $this->setSortParameter('desc');
 
-        // show the hidden status
         $this->addColumn('isActive', ucfirst(Language::lbl('VisibleOnSite')), '[active]');
-        // $this->addColumn('isOnMain', ucfirst(Language::lbl('VisibleOnMain')), '[onMain]');
         $this->setColumnFunction([TemplateModifiers::class, 'showBool'], ['[active]', false], 'isActive');
-        // $this->setColumnFunction([TemplateModifiers::class, 'showBool'], ['[onMain]', false], 'isOnMain');
-        // $this->setColumnHidden('onMain');
 
         // check if this action is allowed
         if (BackendAuthentication::isAllowedAction('Edit')) {
@@ -40,9 +36,9 @@ class BannerDataGrid extends DataGridDatabase
             $this->setColumnURL('title', $editUrl);
             $this->addColumn('edit', null, Language::lbl('Edit'), $editUrl, Language::lbl('Edit'));
 
-            // $editUrl = Model::createUrlForAction('Edit', null, null, ['id' => '[id]'], false);
+            // $editUrl = Model::createUrlForAction('delete', null, null, ['id' => '[id]'], false);
             // $this->setColumnURL('title', $editUrl);
-            // $this->addColumn('edit', null, Language::lbl('Edit'), $editUrl, Language::lbl('Edit'));
+            // $this->addColumn('delete', null, Language::lbl('Delete'), $editUrl, Language::lbl('Delete'));
         }
     }
 

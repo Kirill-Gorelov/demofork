@@ -1,13 +1,13 @@
 <?php
 
-namespace Backend\Modules\Asaf\Actions;
+namespace Backend\Modules\EnerBanners\Actions;
 
 use Backend\Core\Engine\Base\ActionDelete as BackendBaseActionDelete;
 use Backend\Core\Engine\Model as BackendModel;
-use Backend\Modules\Asaf\Domain\Products\Product;
-use Backend\Modules\Asaf\Domain\Products\ProductsDelType;
+use Backend\Modules\EnerBanners\Domain\Banners\Banner;
+use Backend\Modules\EnerBanners\Domain\Banners\BannerDelType;
 
-// use Backend\Modules\Asaf\Domain\Products\Price;
+// use Backend\Modules\EnerBanners\Domain\Banners\Price;
 
 /**
  * Контроллер удаления банеров
@@ -20,7 +20,7 @@ class Delete extends BackendBaseActionDelete
         parent::execute();
 
         $deleteForm = $this->createForm(
-            ProductsDelType::class,
+            BannerDelType::class,
             null,
             ['module' => $this->getModule()]
         );
@@ -34,9 +34,9 @@ class Delete extends BackendBaseActionDelete
 
         $id = $deleteForm->getData()['id'];
 
-        $product = $this->get('doctrine')->getRepository(Product::class)->findOneById($id);
+        $Banner = $this->get('doctrine')->getRepository(Banner::class)->findOneById($id);
 
-        $this->get('doctrine')->getRepository(Product::class)->delete($product);
+        $this->get('doctrine')->getRepository(Banner::class)->delete($Banner);
 
         $this->redirect(BackendModel::createUrlForAction('Index'));
     }

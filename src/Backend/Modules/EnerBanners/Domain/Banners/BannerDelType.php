@@ -10,7 +10,7 @@ final class BannerDelType extends DeleteType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $options['action'] = 'banner_delete';
+        $options['action'] = 'delete';
         parent::buildForm($builder, $options);
 
         $builder->add('id', HiddenType::class);
