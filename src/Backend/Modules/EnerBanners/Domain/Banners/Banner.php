@@ -98,6 +98,13 @@ class Banner
      */
     private $creatorUserId;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $tpl;
+
 
     public function __construct(){
         $this->locale = Locale::workingLocale();
@@ -226,6 +233,22 @@ class Banner
     public function setLocale(Locale $locale): void
     {
         $this->locale = $locale;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTpl()
+    {
+        return (string)$this->tpl;
+    }
+
+    /**
+     * @param string $tpl
+     */
+    public function setTpl(string $tpl): void
+    {
+        $this->tpl = $tpl;
     }
 
     public function getCreatedOn(): DateTime

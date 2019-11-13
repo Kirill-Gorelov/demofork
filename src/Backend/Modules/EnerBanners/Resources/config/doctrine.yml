@@ -2,9 +2,9 @@ doctrine:
   dbal:
   orm:
     mappings:
-      banners:
+      banner:
          type: annotation
          is_bundle: false
          dir: "%kernel.project_dir%/src/Backend/Modules/EnerBanners/Domain/Banners"
-         alias: Banners
+         alias: Banner
          prefix: Backend\Modules\EnerBanners\Domain\Banners
