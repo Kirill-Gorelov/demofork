@@ -1,12 +1,12 @@
 <?php
 
-namespace Backend\Modules\Asaf\Actions;
+namespace Backend\Modules\Banners\Actions;
 
 use Symfony\Component\Form\Form;
 use Backend\Core\Engine\Model as BackendModel;
-use Backend\Modules\Asaf\Domain\Products\Product;
-use Backend\Modules\Asaf\Domain\Products\ProductType;
-use Backend\Modules\Asaf\Domain\Products\ProductsDelType;
+use Backend\Modules\Banners\Domain\Products\Product;
+use Backend\Modules\Banners\Domain\Products\ProductType;
+use Backend\Modules\Banners\Domain\Products\ProductsDelType;
 use Backend\Core\Engine\Base\ActionEdit as BackendBaseActionEdit;
 
 /*

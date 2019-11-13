@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\Banners\Domain\Banners;
+namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Backend\Form\Type\DeleteType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;

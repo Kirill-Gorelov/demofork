@@ -1,7 +1,0 @@
-services:
-    mshop_products.repository.product:
-        class: Backend\Modules\Asaf\Domain\Products\ProductRepository
-        public: true
-        factory: ["@doctrine.orm.entity_manager", getRepository]
-        arguments:
-            - Backend\Modules\Asaf\Domain\Products\Product

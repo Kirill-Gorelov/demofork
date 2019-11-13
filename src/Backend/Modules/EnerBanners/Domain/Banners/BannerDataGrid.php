@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\Banners\Domain\Banners;
+namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Backend\Core\Engine\DataGridDatabase;
 use Backend\Core\Engine\TemplateModifiers;
@@ -20,7 +20,7 @@ class BannerDataGrid extends DataGridDatabase
         parent::__construct(
             'SELECT i.id, i.active, i.title
              FROM banners AS i
-             WHERE 1',
+             WHERE i.language = :language',
             ['language' => $locale]
         );
 

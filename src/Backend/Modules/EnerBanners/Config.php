@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\Banners;
+namespace Backend\Modules\EnerBanners;
 
 use Backend\Core\Engine\Base\Config as BackendBaseConfig;
 

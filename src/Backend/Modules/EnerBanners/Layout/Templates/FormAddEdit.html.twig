@@ -18,13 +18,13 @@
       <div role="tabpanel" class="tab-pane active" id="tabContent">
         <div class="row">
           {{ form_row(form.active) }}
-          {{ form_row(form.onMain) }}
+          {# {{ form_row(form.onMain) }}
           {{ form_row(form.title) }}
           {{ form_row(form.category) }}
           {{ form_row(form.image) }}
           {{ form_widget(form.mediaGroup, {'mediaGroup': mediaGroup}) }}
           {{ form_row(form.description) }}
-          {{ form_row(form.text) }}
+          {{ form_row(form.text) }} #}
 
         </div>
       </div>
@@ -57,4 +57,4 @@
 </div>
 </div>
 {{ form_end(form) }}
-{%include "Asaf/Layout/Templates/js.html.twig" %}
+{%include "EnerBanners/Layout/Templates/js.html.twig" %}

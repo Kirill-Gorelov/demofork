@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\Banners\Domain\Banners;
+namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Doctrine\ORM\EntityRepository;
 // use Backend\Modules\Banners\Domain\Banners\Banner;
@@ -22,11 +22,6 @@ class BannerRepository extends EntityRepository
     {
         $this->getEntityManager()->remove($Banner);
         $this->getEntityManager()->flush();
-    }
-
-    public function getUrl(string $url): string
-    {
-        return $url;
     }
 
     public function getAllBanner(){

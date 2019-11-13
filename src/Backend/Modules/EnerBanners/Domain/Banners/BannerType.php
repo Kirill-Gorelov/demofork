@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\Banners\Domain\Banners;
+namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Symfony\Component\Form\AbstractType;
 //use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -65,7 +65,7 @@ class BannerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Slide::class,
+            'data_class' => Banner::class,
         ));
     }
 

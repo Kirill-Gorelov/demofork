@@ -1,10 +1,10 @@
 <?php
 
-namespace Backend\Modules\Asaf\Actions;
+namespace Backend\Modules\EnerBanners\Actions;
 
 use Backend\Core\Engine\Base\ActionAdd as BackendBaseActionAdd;
-use Backend\Modules\Asaf\Domain\Products\Product;
-use Backend\Modules\Asaf\Domain\Products\ProductType;
+use Backend\Modules\EnerBanners\Domain\Banners\Banner;
+use Backend\Modules\EnerBanners\Domain\Banners\BannerType;
 
 use Symfony\Component\Form\Form;
 use Backend\Core\Engine\Model as BackendModel;
@@ -19,8 +19,8 @@ class Add extends BackendBaseActionAdd
     private function getForm(): Form
     {
         $form = $this->createForm(
-            ProductType::class,
-            new Product()
+            BannerType::class,
+            new Banner()
         );
 
         $form->handleRequest($this->getRequest());
@@ -37,19 +37,19 @@ class Add extends BackendBaseActionAdd
         $this->display();
     }
 
-    private function createProduct(Form $form): bool
+    private function createBanner(Form $form): bool
     {
-        $product = $form->getData();
-        // dump($product);
+        $Banner = $form->getData();
+        // dump($Banner);
         // die;
 
-        $oneslide = $product->getOneslidep();
+        $oneslide = $Banner->getOneslidep();
         if (!empty($oneslide)){
             foreach ($oneslide as $slide) {
-                $slide->setProduct($product);
+                $slide->setBanner($Banner);
             }
         }
-        $this->get('doctrine')->getRepository(Product::class)->add($product);
+        $this->get('doctrine')->getRepository(Banner::class)->add($Banner);
 
         return true;
     }
@@ -65,7 +65,7 @@ class Add extends BackendBaseActionAdd
             return;
         }
 
-        $this->createProduct($form);
+        $this->createBanner($form);
         $this->redirect(BackendModel::createUrlForAction('Index'));
     }
 }

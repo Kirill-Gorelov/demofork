@@ -1,17 +1,16 @@
 <?php
-namespace Backend\Modules\Banners\Installer;
+namespace Backend\Modules\EnerBanners\Installer;
 
 use Common\ModuleExtraType;
 use Backend\Core\Engine\Model;
 use Backend\Core\Installer\ModuleInstaller;
-use Backend\Modules\Banners\Domain\Banners\Banner;
-// use Backend\Modules\Banners\Domain\Banners\Banner;
+use Backend\Modules\EnerBanners\Domain\Banners\Banner;
 
 final class Installer extends ModuleInstaller
 {
     public function install()
     {
-        $this->addModule('Banners');
+        $this->addModule('EnerBanners');
 
         // $this->importLocale(__DIR__ . '/Data/locale.xml');
         $this->configureBackendNavigation();
@@ -27,15 +26,15 @@ final class Installer extends ModuleInstaller
     private function configureBackendNavigation(): void
     {
         $navigationModulesId = $this->setNavigation(null, 'Modules');
-        $moduleAsafId = $this->setNavigation($navigationModulesId, 'Banners');
-        $this->setNavigation($moduleAsafId, 'Banners', 'banners/index', ['banners/add']); 
+        $moduleBannerfId = $this->setNavigation($navigationModulesId, 'EnerBanners');
+        $this->setNavigation($moduleBannerfId, 'Banners', 'ener_banners/index', ['ener_banners/add']); 
     }
 
 
     private function configureBackendRights(): void
     {
-        $this->setModuleRights(1, 'Banners');
-        $this->setActionRights(1, 'Banners', 'Banners');
+        $this->setModuleRights(1, 'EnerBanners');
+        $this->setActionRights(1, 'EnerBanners', 'Banners');
     }
 
 

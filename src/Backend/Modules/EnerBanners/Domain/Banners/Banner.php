@@ -1,15 +1,17 @@
 <?php
-namespace Backend\Modules\Banners\Domain\Banners;
+namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Doctrine\ORM\Mapping as ORM;
 use Backend\Core\Engine\Authentication;
+use Backend\Core\Language\Locale;
 // use Doctrine\Common\Collections\ArrayCollection;
 // use Doctrine\Common\Collections\Collection;
 
 /**
  *
  * @ORM\Table(name="banners")
- * @ORM\Entity(repositoryClass="Backend\Modules\Banners\Domain\Banners\BannerRepository")
+ * @ORM\Entity(repositoryClass="Backend\Modules\EnerBanners\Domain\Banners\BannerRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 
 class Banner
@@ -67,6 +69,18 @@ class Banner
      * @ORM\Column(type="string", length=255)
      */
     private $image = '';
+
+    /**
+     * @var Locale
+     *
+     * @ORM\Column(type="locale", name="language")
+     */
+    private $locale;
+
+
+    public function __construct(){
+        $this->locale = Locale::workingLocale();
+    }
 
     /**
      * @return int
@@ -175,6 +189,34 @@ class Banner
             $image = '';
         }
         $this->image = $image;
+    }
+
+    /**
+     * @return locale
+     */
+    public function getLocale(Locale $locale = null): Locale
+    {
+        if ($locale === null) {
+            $locale = Locale::workingLocale();
+        }
+
+        return $this->locale = $locale;
+    }
+
+    /**
+     * @param locale $locale
+     */
+    public function setLocale(Locale $locale): void
+    {
+        $this->locale = $locale;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->locale = $this->locale;
     }
 
 }
