@@ -4,8 +4,8 @@ namespace Backend\Modules\EnerBanners\Domain\Banners;
 use Doctrine\ORM\Mapping as ORM;
 use Backend\Core\Engine\Authentication;
 use Backend\Core\Language\Locale;
-// use Doctrine\Common\Collections\ArrayCollection;
-// use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  *
@@ -31,14 +31,6 @@ class Banner
      * @ORM\Column(type="string", name="title")
      */
     private $title;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", name="sort", nullable=true)
-     */
-    private $sort;
-
 
     /**
      * @var string
@@ -123,22 +115,6 @@ class Banner
     }
 
     /**
-     * @return integer
-     */
-    public function getSort()
-    {
-        return (int)$this->sort;
-    }
-
-    /**
-     * @param integer $sort
-     */
-    public function setSort(int $sort): void
-    {
-        $this->sort = $sort;
-    }
-
-    /**
      * @return string
      */
     public function getLink()
@@ -190,6 +166,7 @@ class Banner
         }
         $this->image = $image;
     }
+
 
     /**
      * @return locale

@@ -1,12 +1,12 @@
 <?php
 
-namespace Backend\Modules\Banners\Actions;
+namespace Backend\Modules\EnerBanners\Actions;
 
 use Symfony\Component\Form\Form;
 use Backend\Core\Engine\Model as BackendModel;
-use Backend\Modules\Banners\Domain\Products\Product;
-use Backend\Modules\Banners\Domain\Products\ProductType;
-use Backend\Modules\Banners\Domain\Products\ProductsDelType;
+use Backend\Modules\EnerBanners\Domain\Banners\Banner;
+use Backend\Modules\EnerBanners\Domain\Banners\BannerType;
+use Backend\Modules\EnerBanners\Domain\Banners\BannerDelType;
 use Backend\Core\Engine\Base\ActionEdit as BackendBaseActionEdit;
 
 /*
@@ -16,19 +16,19 @@ class Edit extends BackendBaseActionEdit {
 
     protected $id;
 
-    private $product;
+    private $banner;
 
-    private function loadProduct(): void
+    private function loadBanner(): void
     {
-        $this->product = $this->get('doctrine')->getRepository(Product::class)->findOneById($this->id);
+        $this->banner = $this->get('doctrine')->getRepository(Banner::class)->findOneById($this->id);
 
     }
 
     private function getForm(): Form
     {
         $form = $this->createForm(
-            ProductType::class,
-            $this->product
+            BannerType::class,
+            $this->banner
         );
 
         // var_dump($form);
@@ -53,7 +53,7 @@ class Edit extends BackendBaseActionEdit {
     private function loadDeleteForm(): void
     {
         $deleteForm = $this->createForm(
-            ProductsDelType::class,
+            BannerDelType::class,
             ['id' => $this->id],
             ['module' => $this->getModule()]
         );
@@ -63,9 +63,9 @@ class Edit extends BackendBaseActionEdit {
     protected function parse(): void
     {
         parent::parse();
-        // $this->template->assign('mediaGroup', $this->product->getMediaGroup());
-        // $this->template->assign('image', $this->product->getImage());
-        $this->template->assign('id', $this->product->getId());
+        // $this->template->assign('mediaGroup', $this->Banner->getMediaGroup());
+        // $this->template->assign('image', $this->Banner->getImage());
+        $this->template->assign('id', $this->banner->getId());
     }
 
     public function execute(): void
@@ -74,7 +74,7 @@ class Edit extends BackendBaseActionEdit {
 
         $this->id = $this->getRequest()->get('id');
 
-        $this->loadProduct();
+        $this->loadBanner();
 
         $form = $this->getForm();
         // dump($form);
@@ -86,16 +86,16 @@ class Edit extends BackendBaseActionEdit {
             return;
         }
 
-        $sliders = $this->product->getOneslidep();
-        // dump($sliders);
-        // die;
-        if (!empty($sliders)){
-            foreach ($sliders as $slide) {
-                $slide->setProduct($this->product);
-            }
-        }
+        // $sliders = $this->product->getOneslidep();
+        // // dump($sliders);
+        // // die;
+        // if (!empty($sliders)){
+        //     foreach ($sliders as $slide) {
+        //         $slide->setProduct($this->product);
+        //     }
+        // }
 
-        $this->get('doctrine')->getRepository(Product::class)->update();
+        $this->get('doctrine')->getRepository(Banner::class)->update();
         $this->redirect(BackendModel::createUrlForAction('Index'));
     }
 

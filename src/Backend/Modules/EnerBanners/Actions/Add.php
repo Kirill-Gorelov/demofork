@@ -43,12 +43,12 @@ class Add extends BackendBaseActionAdd
         // dump($Banner);
         // die;
 
-        $oneslide = $Banner->getOneslidep();
-        if (!empty($oneslide)){
-            foreach ($oneslide as $slide) {
-                $slide->setBanner($Banner);
-            }
-        }
+        // $oneslide = $Banner->getOneslide();
+        // if (!empty($oneslide)){
+        //     foreach ($oneslide as $slide) {
+        //         $slide->setBanner($Banner);
+        //     }
+        // }
         $this->get('doctrine')->getRepository(Banner::class)->add($Banner);
 
         return true;

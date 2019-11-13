@@ -6,12 +6,15 @@
 <div class="col-md-12">
   <div>
     <ul class="nav nav-tabs nav-tabs-flex" role="tablist">
-      <li role="presentation" class="active mr-auto">
+      <li role="presentation" class="active">
         <a href="#tabContent" aria-controls="tabContent" role="tab"
            data-toggle="tab">{{ 'lbl.Content'|trans|ucfirst }}</a>
       </li>
       <li role="presentation">
-        <a href="#tabSEO" aria-controls="tabSEO" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|ucfirst }}</a>
+        <a href="#picture" aria-controls="picture" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|ucfirst }}</a>
+      </li>
+      <li role="presentation">
+          <a href="#information" aria-controls="information" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|ucfirst }}</a>
       </li>
     </ul>
     <div class="tab-content">
@@ -29,13 +32,23 @@
         </div>
       </div>
 
+      <div role="tabpanel" class="tab-pane" id="picture">
+          <div class="row">
+            сам баннер
+            {# {{ form_row(form.meta) }} #}
+          </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="information">
+            <div class="row">
+              кто и когда создал
+              может быть кол. просмотров
+              {# {{ form_row(form.meta) }} #}
+            </div>
+          </div>
+
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="tabSEO">
-      <div class="row">
-        {# {{ form_row(form.meta) }} #}
-      </div>
-    </div>
 
     <div class="btn-toolbar">
       {% if form.vars.value.id > 0 %}
