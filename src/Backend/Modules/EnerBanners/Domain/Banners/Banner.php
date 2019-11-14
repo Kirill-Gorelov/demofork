@@ -8,6 +8,8 @@ use Backend\Core\Language\Locale;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
+use Backend\Core\Engine\Model;
+use Common\ModuleExtraType;
 
 /**
  *
@@ -106,6 +108,13 @@ class Banner
      * @ORM\Column(type="string", length=255)
      */
     private $tpl;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+     protected $moduleExtraId;
 
 
     public function __construct(){
@@ -224,7 +233,7 @@ class Banner
 
         $user = new User($this->editorUserId);
         if($user->getEmail() == $this->getCreatorUserId()){
-            return '0';
+            return '';
         }
 
         return $user->getEmail();
@@ -294,6 +303,11 @@ class Banner
         $this->date = $date;
     }
 
+    public function getModuleExtraId(): int
+    {
+        return $this->moduleExtraId;
+    }
+
     /**
      * @ORM\PrePersist
      */
@@ -302,6 +316,15 @@ class Banner
         $this->locale = $this->locale;
         $this->editedOn = new DateTime();
         $this->creatorUserId = $this->editorUserId = Authentication::getUser()->getUserId();
+
+        $this->moduleExtraId = Model::insertExtra(
+            ModuleExtraType::widget(),
+            'EnerBanners',
+            'Banners',
+            'Banners',
+            [],
+            false
+        );
     }
 
     /**
@@ -312,5 +335,48 @@ class Banner
         $this->editedOn = new DateTime();
         $this->editorUserId = Authentication::getUser()->getUserId();
     }
+
+        /**
+     * Update module extra data
+     *
+     * @ORM\PostPersist
+     * @ORM\PostUpdate
+     */
+     public function updateModuleExtraData()
+     {
+         // Update ModuleExtra data
+         Model::updateExtra(
+             $this->getModuleExtraId(),
+             'data',
+             [
+                 'gallery_id' => $this->id,
+                 'extra_label' => $this->getTitle(),
+                 'edit_url' => Model::createUrlForAction(
+                     'PageslidersEdit',
+                     'Pagesliders',
+                     null,
+                     ['id' => $this->getId()]
+                 ),
+             ]
+         );
+ 
+         // Update hidden
+         Model::updateExtra(
+             $this->moduleExtraId,
+             'hidden',
+             false
+         );
+     }
+ 
+     /**
+      * @ORM\PostRemove
+      */
+     public function onPostRemove()
+     {
+         Model::deleteExtraById(
+             $this->moduleExtraId,
+             true
+         );
+     }
 
 }
