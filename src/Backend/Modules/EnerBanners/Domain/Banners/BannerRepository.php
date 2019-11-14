@@ -24,8 +24,17 @@ class BannerRepository extends EntityRepository
         $this->getEntityManager()->flush();
     }
 
-    public function getBanner(){
-        return $this->createQueryBuilder('o')->getQuery()->getResult();
+    public function getBanner(int $id){
+        $rez = $this->createQueryBuilder('b')
+        ->where('b.id = :id and b.active = 1')
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getResult();
+
+        if (!empty($rez)) {
+            return $rez['0'];
+        }
+        return '';
     }
 
 }

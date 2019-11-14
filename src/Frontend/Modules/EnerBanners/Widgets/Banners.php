@@ -9,14 +9,13 @@ class Banners extends FrontendBaseWidget
 {
     private $tpl;
     private $banner;
+    
     public function execute(): void
     {       
         parent::execute();
         $this->loadData();
         $this->loadTemplate($this->tpl);
         $this->parse();
-        // var_dump($this->data);
-        // var_dump($this->url);
     }
 
     public function parse(){
