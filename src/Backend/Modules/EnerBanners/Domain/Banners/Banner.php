@@ -3,6 +3,7 @@ namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Doctrine\ORM\Mapping as ORM;
 use Backend\Core\Engine\Authentication;
+use Backend\Core\Engine\User;
 use Backend\Core\Language\Locale;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -200,13 +201,18 @@ class Banner
 
     public function getCreatorUserId()
     {
-        // return (int)$this->creatorUserId;
-        return Authentication::getUser()->getEmail();
+        $user = new User(1);
+        return $user->getEmail();
     }
 
     public function getEditorUserId(): int
     {
-        return (int)$this->editorUserId;
+        $user = new User(1);
+        if($user->getEmail() == $this->getCreatorUserId()){
+            return '';
+        }
+        return $user->getEmail();
+
     }
 
     /**
@@ -248,8 +254,12 @@ class Banner
     /**
      * @return string
      */
-    public function getEditedOn()
-    {
+    public function getEditedOn(){
+        
+        if (is_null($this->editedOn)) {
+            return '';
+        }
+
         return date_format($this->editedOn, 'Y-m-d H:i');
     }
 
