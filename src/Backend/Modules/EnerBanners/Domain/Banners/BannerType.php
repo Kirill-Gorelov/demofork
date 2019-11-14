@@ -100,6 +100,14 @@ class BannerType extends AbstractType
             'required' => true,
             'label' => 'Выберите шаблон виджета',
         ]
+        )->add('views_count',
+            TextType::class,
+            [
+                'label' => 'Количество просмотров',
+                'empty_data' => false,
+                'disabled' => true,
+                'required' => false,
+            ]
         ); 
 
     }

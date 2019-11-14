@@ -3,7 +3,7 @@
 namespace Backend\Modules\EnerBanners\Domain\Banners;
 
 use Doctrine\ORM\EntityRepository;
-// use Backend\Modules\Banners\Domain\Banners\Banner;
+use Backend\Modules\EnerBanners\Domain\Banners\Banner;
 
 class BannerRepository extends EntityRepository
 {
@@ -32,10 +32,24 @@ class BannerRepository extends EntityRepository
         ->getResult();
 
         if (!empty($rez)) {
+            // $rez = $rez[0];
+            var_dump($rez->id);
+            // $count = $rez['views_count'];
+            // $this->updateViewsCount($id, $count);
             return $rez['0'];
         }
-        
+
         return '';
+    }
+
+    public function updateViewsCount($id, $count){
+        $rez = $this->createQueryBuilder('b')
+        ->update('Backend\Modules\EnerBanners\Domain\Banners\Banner', 'b')
+        ->set('b.views_count', $count)
+        ->where('b.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->execute();
     }
 
 }

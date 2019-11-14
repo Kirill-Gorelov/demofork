@@ -114,7 +114,14 @@ class Banner
      *
      * @ORM\Column(type="integer")
      */
-     protected $moduleExtraId;
+    protected $moduleExtraId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", name="views_count")
+     */
+    protected $views_count;
 
 
     public function __construct(){
@@ -306,6 +313,11 @@ class Banner
     public function getModuleExtraId(): int
     {
         return $this->moduleExtraId;
+    }
+
+    public function getViewsCount(): int
+    {
+        return $this->views_count;
     }
 
     /**
