@@ -32,14 +32,23 @@
       <div role="tabpanel" class="tab-pane" id="picture">
           <div class="row">
             {{ form_row(form.image) }}
+            {{ form_row(form.tpl) }}
+
           </div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="information">
             <div class="row">
-              кто и когда создал
-              может быть кол. просмотров
-              {# {{ form_row(form.meta) }} #}
+              {{ form_row(form.creator_user_id) }}
+              {{ form.vars.value.editor_user_id }}
+              {% if (form.vars.value.editor_user_id) != '' %}
+              rty
+              {% endif %}
+                {{ form_row(form.editor_user_id) }}
+                <hr>
+
+                {{ form_row(form.date) }}
+                {{ form_row(form.edited_on) }}
             </div>
           </div>
     </div>

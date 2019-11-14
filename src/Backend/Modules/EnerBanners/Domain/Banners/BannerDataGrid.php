@@ -24,7 +24,7 @@ class BannerDataGrid extends DataGridDatabase
             ['language' => $locale]
         );
 
-        $this->setSortingColumns(['title']);
+        $this->setSortingColumns(['id']);
         $this->setSortParameter('desc');
 
         $this->addColumn('isActive', ucfirst(Language::lbl('VisibleOnSite')), '[active]');

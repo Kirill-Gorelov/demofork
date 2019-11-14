@@ -79,9 +79,18 @@ class BannerType extends AbstractType
         )->add('creator_user_id',
             TextType::class,
             [
-                'label' => 'кто создал',
+                'label' => 'Создал',
                 'empty_data' => false,
-                'disabled' => true
+                'disabled' => true,
+                'required' => false,
+            ]
+        )->add('editor_user_id',
+            TextType::class,
+            [
+                'label' => 'Изменил',
+                'empty_data' => false,
+                'disabled' => true,
+                'required' => false,
             ]
         )->add('tpl',
             ChoiceType::class, [

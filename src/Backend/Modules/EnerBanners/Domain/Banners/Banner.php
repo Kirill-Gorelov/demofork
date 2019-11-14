@@ -94,6 +94,13 @@ class Banner
     private $creatorUserId;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", name="editor_user_id")
+     */
+     private $editorUserId;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
@@ -200,19 +207,27 @@ class Banner
     }
 
     public function getCreatorUserId()
-    {
-        $user = new User(1);
-        return $user->getEmail();
+    {   
+        if (is_null($this->creatorUserId) == false) { //ужасное условие
+            $user = new User($this->creatorUserId);
+            return $user->getEmail();
+        }
+
+        return '';
     }
 
-    public function getEditorUserId(): int
+    public function getEditorUserId()
     {
-        $user = new User(1);
-        if($user->getEmail() == $this->getCreatorUserId()){
+        if (is_null($this->editorUserId) == true) { //ужасное условие
             return '';
         }
-        return $user->getEmail();
 
+        $user = new User($this->editorUserId);
+        if($user->getEmail() == $this->getCreatorUserId()){
+            return '0';
+        }
+
+        return $user->getEmail();
     }
 
     /**
