@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 //use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\LabelType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -36,28 +37,60 @@ class BannerType extends AbstractType
         )->add('title',
             TextType::class,
             [
-                'label' => 'Заголовок',
-                'empty_data' => false
+                'label' => 'Название',
+                'empty_data' => false,
+                'required' => true,
             ]
         )->add('link',
             TextType::class,
             [
                 'label' => 'Ссылка',
-                'empty_data' => false
+                'empty_data' => false,
+                'required' => true,
             ]
         )->add('image',
             TextType::class,
             [
                 'label' => 'Изображение',
-                'required' => false,
+                'required' => true,
                 'attr' => ['class'=>'mediaselect'],
             ]
         )->add('description',
             EditorType::class,
             [
                 'label' => 'Короткое описание',
-                'empty_data' => false
+                'empty_data' => false,
+                'required' => false,
             ]
+        )->add('date',
+            TextType::class,
+            [
+                'label' => 'Дата создания',
+                'empty_data' => false,
+                'disabled' => true
+            ]
+        )->add('edited_on',
+            TextType::class,
+            [
+                'label' => 'Дата изменения',
+                'empty_data' => false,
+                'disabled' => true
+            ]
+        )->add('creator_user_id',
+            TextType::class,
+            [
+                'label' => 'кто создал',
+                'empty_data' => false,
+                'disabled' => true
+            ]
+        )->add('tpl',
+            ChoiceType::class, [
+            'choices' => $this->getTplLayout(),
+            'by_reference' => false,
+            'placeholder' => 'Выбрать шаблон',
+            'required' => true,
+            'label' => 'Выберите шаблон виджета',
+        ]
         ); 
 
     }
@@ -67,6 +100,16 @@ class BannerType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => Banner::class,
         ));
+    }
+
+    private function getTplLayout(){
+        $ar = [];
+        foreach (glob($_SERVER['DOCUMENT_ROOT']."/src/Frontend/Modules/EnerBanners/Layout/*.html.twig") as $filename) {
+            $filename = explode('/',$filename);
+            $filename = end($filename);
+            $ar[$filename] = $filename;
+        }
+        return $ar;
     }
 
 }

@@ -77,12 +77,6 @@ class Banner
      */
     private $date;
 
-    /**
-     * @var DateTime
-     *
-     * @ORM\Column(type="datetime", name="created_on")
-     */
-    private $createdOn;
 
     /**
      * @var DateTime
@@ -204,16 +198,16 @@ class Banner
         $this->image = $image;
     }
 
-    public function getCreatorUserId(): int
+    public function getCreatorUserId()
     {
-        return $this->creatorUserId;
+        // return (int)$this->creatorUserId;
+        return Authentication::getUser()->getEmail();
     }
 
     public function getEditorUserId(): int
     {
-        return $this->editorUserId;
+        return (int)$this->editorUserId;
     }
-
 
     /**
      * @return locale
@@ -251,14 +245,28 @@ class Banner
         $this->tpl = $tpl;
     }
 
-    public function getCreatedOn(): DateTime
+    /**
+     * @return string
+     */
+    public function getEditedOn()
     {
-        return $this->createdOn;
+        return date_format($this->editedOn, 'Y-m-d H:i');
     }
 
-    public function getEditedOn(): DateTime
+    /**
+     * @return string
+     */
+    public function getDate()
     {
-        return $this->editedOn;
+        return date_format($this->date, 'Y-m-d H:i');
+    }
+
+    /**
+     * @param DateTime $date
+     */
+    public function setDate(DateTime $date): void
+    {
+        $this->date = $date;
     }
 
     /**
@@ -267,7 +275,7 @@ class Banner
     public function prePersist()
     {
         $this->locale = $this->locale;
-        $this->createdOn = $this->editedOn = new DateTime();
+        $this->editedOn = new DateTime();
         $this->creatorUserId = $this->editorUserId = Authentication::getUser()->getUserId();
     }
 
