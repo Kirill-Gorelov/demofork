@@ -34,6 +34,7 @@ class BannerRepository extends EntityRepository
         if (!empty($rez)) {
             return $rez['0'];
         }
+        
         return '';
     }
 
