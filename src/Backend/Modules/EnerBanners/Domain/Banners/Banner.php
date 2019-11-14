@@ -336,7 +336,7 @@ class Banner
         $this->editorUserId = Authentication::getUser()->getUserId();
     }
 
-        /**
+    /**
      * Update module extra data
      *
      * @ORM\PostPersist

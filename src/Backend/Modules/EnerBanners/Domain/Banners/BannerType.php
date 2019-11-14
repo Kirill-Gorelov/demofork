@@ -113,7 +113,7 @@ class BannerType extends AbstractType
 
     private function getTplLayout(){
         $ar = [];
-        foreach (glob($_SERVER['DOCUMENT_ROOT']."/src/Frontend/Modules/EnerBanners/Layout/*.html.twig") as $filename) {
+        foreach (glob($_SERVER['DOCUMENT_ROOT']."/src/Frontend/Modules/EnerBanners/Layout/Widgets/*.html.twig") as $filename) {
             $filename = explode('/',$filename);
             $filename = end($filename);
             $ar[$filename] = $filename;
