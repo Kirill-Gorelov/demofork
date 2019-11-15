@@ -376,7 +376,8 @@ class Banner
      */
     public function getDateViews()
     {
-        return date_format($this->date_views, 'Y-m-d H:i');
+        // return date_format($this->date_views, 'Y-m-d H:i');
+        return $this->date_views;
     }
 
     /**

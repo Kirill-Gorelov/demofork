@@ -85,9 +85,9 @@ class BannerType extends AbstractType
                 'disabled' => true
             ]
         )->add('date_views',
-            TextType::class,
+            DateTimeType::class,
             [
-                'label' => 'Опубликовать',
+                'label' => 'Дата публикации',
                 'empty_data' => false,
             ]
         )->add('edited_on',
