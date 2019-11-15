@@ -51,8 +51,22 @@ class BannerType extends AbstractType
         )->add('image',
             TextType::class,
             [
-                'label' => 'Изображение',
+                'label' => 'Изображение ',
                 'required' => true,
+                'attr' => ['class'=>'mediaselect'],
+            ]
+        )->add('imagelg',
+            TextType::class,
+            [
+                'label' => 'Изображение для большого экрана 1920px',
+                'required' => false,
+                'attr' => ['class'=>'mediaselect'],
+            ]
+        )->add('imagemd',
+            TextType::class,
+            [
+                'label' => 'Изображение для среднего экрана 1366px',
+                'required' => false,
                 'attr' => ['class'=>'mediaselect'],
             ]
         )->add('description',

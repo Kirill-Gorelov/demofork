@@ -67,6 +67,20 @@ class Banner
     private $image = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imagemd = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imagelg = '';
+
+    /**
      * @var Locale
      *
      * @ORM\Column(type="locale", name="language")
@@ -220,6 +234,46 @@ class Banner
             $image = '';
         }
         $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageLg(): string
+    {
+        return $this->imagelg;
+    }
+
+    /**
+     * @param string $imagelg
+     */
+    public function setImageLg($imagelg): void
+    {
+        if(!$imagelg){
+            $imagelg = '';
+        }
+        $this->imagelg = $imagelg;
+    }
+
+    public function getImageMd(): string
+    {
+        return $this->imagemd;
+    }
+
+    /**
+     * @param string $imagemd
+     */
+    public function setImageMd($imagemd): void
+    {
+        if(!$imagemd){
+            $imagemd = '';
+        }
+        $this->imagemd = $imagemd;
+    }
+    
+    public function getImageMb(): string
+    {
+        return $this->imagemb;
     }
 
     public function getCreatorUserId()
