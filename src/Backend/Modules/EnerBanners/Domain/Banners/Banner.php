@@ -147,7 +147,7 @@ class Banner
     public function __construct(){
         $this->locale = Locale::workingLocale();
         $this->date = new \DateTime();
-        $this->date_views = new \DateTime();
+        // $this->date_views = new \DateTime();
     }
 
     /**
@@ -377,6 +377,9 @@ class Banner
     public function getDateViews()
     {
         // return date_format($this->date_views, 'Y-m-d H:i');
+        if (is_null($this->date_views)) {
+            return new DateTime();
+        }
         return $this->date_views;
     }
 
@@ -385,7 +388,7 @@ class Banner
      */
     public function setDateViews(DateTime $date_views): void
     {
-        $this->date = $date_views;
+        $this->date_views = $date_views;
     }
 
     public function getModuleExtraId(): int

@@ -26,9 +26,10 @@ class BannerRepository extends EntityRepository
 
     public function getBanner(int $id){
         $rez = $this->createQueryBuilder('b')
-        ->where('b.id = :id and b.active = 1')
+        ->where('b.id = :id and b.active = 1 and b.date_views < :now')
         // ->setMaxResults(1)
         ->setParameter('id', $id)
+        ->setParameter('now', new \DateTime('now'))
         ->getQuery()
         ->getResult();
 
