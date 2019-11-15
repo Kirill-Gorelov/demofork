@@ -27,16 +27,17 @@ class BannerRepository extends EntityRepository
     public function getBanner(int $id){
         $rez = $this->createQueryBuilder('b')
         ->where('b.id = :id and b.active = 1')
+        // ->setMaxResults(1)
         ->setParameter('id', $id)
         ->getQuery()
         ->getResult();
 
         if (!empty($rez)) {
-            // $rez = $rez[0];
-            var_dump($rez->id);
-            // $count = $rez['views_count'];
-            // $this->updateViewsCount($id, $count);
-            return $rez['0'];
+            $rez = $rez[0]; //TODO: или ????
+            // $rez = end($rez);
+            $count = $rez->views_count + 1;
+            $this->updateViewsCount($id, $count);
+            return $rez;
         }
 
         return '';

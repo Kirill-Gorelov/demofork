@@ -121,7 +121,7 @@ class Banner
      *
      * @ORM\Column(type="integer", name="views_count")
      */
-    protected $views_count;
+    public $views_count;
 
 
     public function __construct(){
