@@ -27,26 +27,25 @@
           {{ form_row(form.active) }}
           {{ form_row(form.title) }}
           {{ form_row(form.link) }}
+          {{ form_row(form.tpl) }}
         </div>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="description">
           <div class="row">
               {{ form_row(form.description) }}
-
           </div>
         </div>
 
       <div role="tabpanel" class="tab-pane" id="picture">
           <div class="row">
             {{ form_row(form.image) }}
-            {{ form_row(form.tpl) }}
-
           </div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="information">
             <div class="row">
+              {{ form_row(form.id) }}
               {{ form_row(form.creator_user_id) }}
               {{ form.vars.value.editor_user_id }}
               {% if (form.vars.value.editor_user_id) != '' %}

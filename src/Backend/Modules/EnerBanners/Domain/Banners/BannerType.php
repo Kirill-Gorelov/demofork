@@ -108,6 +108,14 @@ class BannerType extends AbstractType
                 'disabled' => true,
                 'required' => false,
             ]
+        )->add('id',
+            TextType::class,
+            [
+                'label' => 'ID баннера',
+                'empty_data' => false,
+                'disabled' => true,
+                'required' => false,
+            ]
         ); 
 
     }
