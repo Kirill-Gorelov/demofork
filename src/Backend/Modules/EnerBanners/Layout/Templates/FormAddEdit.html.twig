@@ -30,7 +30,13 @@
                   <div class="panel-body">
                     {{ form_row(form.title) }}
                     {{ form_row(form.link) }}
-                    {{ form_row(form.tpl) }}
+                  </div>
+              </div>
+
+              <div class="panel panel-default">
+                  <div class="panel-heading"><h2>Опубликовать</h2></div>
+                  <div class="panel-body">
+                      {{ form_row(form.date_views) }}
                   </div>
               </div>
             </div>
@@ -39,19 +45,18 @@
                   <div class="panel-heading"><h2>Статус</h2></div>
                   <div class="panel-body">
                     {{ form_row(form.active) }}
-                    
                   </div>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="panel panel-default">
-                  <div class="panel-heading"><h2>Опубликовать</h2></div>
-                  <div class="panel-body">
-                      {{ form_row(form.date_views) }}
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h2>Шаблон</h2></div>
+                    <div class="panel-body">
+                        {{ form_row(form.tpl) }}
+                    </div>
                   </div>
-              </div>
             </div>
           </div>
+
         </div>
 
       <div role="tabpanel" class="tab-pane" id="description">

@@ -119,7 +119,7 @@ class BannerType extends AbstractType
             'by_reference' => false,
             'placeholder' => 'Выбрать шаблон',
             'required' => true,
-            'label' => 'Выберите шаблон виджета',
+            'label' => 'Шаблон баннера',
         ]
         )->add('views_count',
             TextType::class,
