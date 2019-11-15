@@ -47,7 +47,7 @@ class BannerType extends AbstractType
             [
                 'label' => 'Ссылка',
                 'empty_data' => false,
-                'required' => true,
+                'required' => false,
             ]
         )->add('image',
             TextType::class,

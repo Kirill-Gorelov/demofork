@@ -141,7 +141,7 @@ class Banner
      *
      * @ORM\Column(type="integer", name="views_count")
      */
-    public $views_count;
+    public $views_count = 0;
 
 
     public function __construct(){
@@ -401,6 +401,7 @@ class Banner
         if (is_null($this->views_count)) {
             return 0;
         }
+
         return $this->views_count;
     }
 
