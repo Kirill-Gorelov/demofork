@@ -12,7 +12,7 @@ final class Installer extends ModuleInstaller
     {
         $this->addModule('EnerBanners');
 
-        // $this->importLocale(__DIR__ . '/Data/locale.xml');
+        $this->importLocale(__DIR__ . '/Data/locale.xml');
         $this->configureBackendNavigation();
         $this->configureBackendRights();
         $this->makeSearchable($this->getModule());

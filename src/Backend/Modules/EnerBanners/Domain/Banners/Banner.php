@@ -127,7 +127,7 @@ class Banner
      *
      * @ORM\Column(type="string", length=255)
      */
-    private $tpl;
+    public $tpl;
 
     /**
      * @var int

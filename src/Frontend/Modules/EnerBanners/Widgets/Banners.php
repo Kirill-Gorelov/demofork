@@ -25,7 +25,7 @@ class Banners extends FrontendBaseWidget
     public function loadData() {
         if(intval($this->data['gallery_id']) != 0){
             $this->banner = $this->get('doctrine')->getRepository(Banner::class)->getBanner($this->data['gallery_id']);
-            $this->tpl = '/EnerBanners/Layout/Widgets/default.html.twig';
+            $this->tpl = '/EnerBanners/Layout/Widgets/'.$this->banner->tpl;
         }else{
             $this->banner = '';
             $this->tpl = '';
