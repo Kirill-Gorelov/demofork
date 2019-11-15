@@ -33,6 +33,7 @@ class BannerType extends AbstractType
             [
                 'label' => 'Показывать',
                 'required' => false,
+                
             ]
         )->add('title',
             TextType::class,
@@ -82,6 +83,12 @@ class BannerType extends AbstractType
                 'label' => 'Дата создания',
                 'empty_data' => false,
                 'disabled' => true
+            ]
+        )->add('date_views',
+            TextType::class,
+            [
+                'label' => 'Опубликовать',
+                'empty_data' => false,
             ]
         )->add('edited_on',
             TextType::class,

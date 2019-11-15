@@ -94,6 +94,12 @@ class Banner
      */
     private $date;
 
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime", name="date_views")
+     */
+    private $date_views;
 
     /**
      * @var DateTime
@@ -141,6 +147,7 @@ class Banner
     public function __construct(){
         $this->locale = Locale::workingLocale();
         $this->date = new \DateTime();
+        $this->date_views = new \DateTime();
     }
 
     /**
@@ -270,7 +277,7 @@ class Banner
         }
         $this->imagemd = $imagemd;
     }
-    
+
     public function getImageMb(): string
     {
         return $this->imagemb;
@@ -362,6 +369,22 @@ class Banner
     public function setDate(DateTime $date): void
     {
         $this->date = $date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateViews()
+    {
+        return date_format($this->date_views, 'Y-m-d H:i');
+    }
+
+    /**
+     * @param DateTime $date
+     */
+    public function setDateViews(DateTime $date_views): void
+    {
+        $this->date = $date_views;
     }
 
     public function getModuleExtraId(): int
