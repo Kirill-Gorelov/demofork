@@ -12,6 +12,9 @@
            data-toggle="tab">{{ 'lbl.Content'|trans|ucfirst }}</a>
       </li>
       <li role="presentation">
+          <a href="#description" aria-controls="description" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|ucfirst }}</a>
+        </li>
+      <li role="presentation">
         <a href="#picture" aria-controls="picture" role="tab" data-toggle="tab">{{ 'lbl.SEO'|trans|ucfirst }}</a>
       </li>
       <li role="presentation">
@@ -24,10 +27,15 @@
           {{ form_row(form.active) }}
           {{ form_row(form.title) }}
           {{ form_row(form.link) }}
-          {{ form_row(form.description) }}
-
         </div>
       </div>
+
+      <div role="tabpanel" class="tab-pane" id="description">
+          <div class="row">
+              {{ form_row(form.description) }}
+
+          </div>
+        </div>
 
       <div role="tabpanel" class="tab-pane" id="picture">
           <div class="row">
