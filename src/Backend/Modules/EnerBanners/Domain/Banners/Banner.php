@@ -317,6 +317,9 @@ class Banner
 
     public function getViewsCount(): int
     {
+        if (is_null($this->views_count)) {
+            return 0;
+        }
         return $this->views_count;
     }
 
