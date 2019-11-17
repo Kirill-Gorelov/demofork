@@ -68,35 +68,6 @@ class Slide
      */
     private $pagesliders;
 
-    /**
-     * @var Product
-     *
-     * @ORM\ManyToOne(
-     *     targetEntity="Backend\Modules\EnerSliders\Domain\Products\Product",
-     *     inversedBy="Slidep"
-     * )
-     * @ORM\JoinColumn(
-     *     name="Slidep_id",
-     *     referencedColumnName="id",
-     *     onDelete="cascade"
-     * )
-     */
-    private $product;
-
-    /**
-     * @var Amenties
-     *
-     * @ORM\ManyToOne(
-     *     targetEntity="Backend\Modules\EnerSliders\Domain\Ament\Amenties",
-     *     inversedBy="Slidea"
-     * )
-     * @ORM\JoinColumn(
-     *     name="Slidea_id",
-     *     referencedColumnName="id",
-     *     onDelete="cascade"
-     * )
-     */
-    private $amenties;
 
     /**
      * @return int
@@ -184,26 +155,6 @@ class Slide
     public function setPagesliders($pagesliders)
     {
         $this->pagesliders = $pagesliders;
-    }
-
-    public function getProduct()
-    {
-        return $this->product;
-    }
-
-    public function setProduct($product)
-    {
-        $this->product = $product;
-    }
-
-    public function getAmenties()
-    {
-        return $this->amenties;
-    }
-
-    public function setAmenties( $amenties)
-    {
-        $this->amenties = $amenties;
     }
 
 }
