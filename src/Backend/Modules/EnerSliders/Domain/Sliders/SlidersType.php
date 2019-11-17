@@ -42,34 +42,6 @@ class SliderType extends AbstractType
                 'empty_data' => false,
                 'required' => true,
             ]
-        )->add('link',
-            TextType::class,
-            [
-                'label' => 'Ссылка',
-                'empty_data' => false,
-                'required' => false,
-            ]
-        )->add('image',
-            TextType::class,
-            [
-                'label' => 'Изображение ',
-                'required' => true,
-                'attr' => ['class'=>'mediaselect'],
-            ]
-        )->add('imagelg',
-            TextType::class,
-            [
-                'label' => 'Изображение для большого экрана 1920px',
-                'required' => false,
-                'attr' => ['class'=>'mediaselect'],
-            ]
-        )->add('imagemd',
-            TextType::class,
-            [
-                'label' => 'Изображение для среднего экрана 1366px',
-                'required' => false,
-                'attr' => ['class'=>'mediaselect'],
-            ]
         )->add('description',
             EditorType::class,
             [
@@ -121,14 +93,6 @@ class SliderType extends AbstractType
             'required' => true,
             'label' => 'Шаблон баннера',
         ]
-        )->add('views_count',
-            TextType::class,
-            [
-                'label' => 'Количество просмотров',
-                'empty_data' => false,
-                'disabled' => true,
-                'required' => false,
-            ]
         )->add('id',
             TextType::class,
             [
