@@ -43,12 +43,12 @@ class Add extends BackendBaseActionAdd
         // dump($Slider);
         // die;
 
-        // $oneslide = $Slider->getOneslide();
-        // if (!empty($oneslide)){
-        //     foreach ($oneslide as $slide) {
-        //         $slide->setSlider($Slider);
-        //     }
-        // }
+        $oneslide = $slider->getSlide();
+        if (!empty($oneslide)){
+            foreach ($oneslide as $slide) {
+                $slide->setPagesliders($slider);
+            }
+        }
         $this->get('doctrine')->getRepository(Slider::class)->add($slider);
 
         return true;
