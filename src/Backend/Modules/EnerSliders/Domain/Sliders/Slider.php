@@ -18,7 +18,7 @@ use Common\ModuleExtraType;
  * @ORM\HasLifecycleCallbacks
  */
 
-class Sliders
+class Slider
 {
     /**
      * @var integer
