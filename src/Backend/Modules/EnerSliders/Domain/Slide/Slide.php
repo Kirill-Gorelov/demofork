@@ -1,19 +1,18 @@
 <?php
-namespace Backend\Modules\EnerSliders\Domain\EnerSlide;
+namespace Backend\Modules\EnerSliders\Domain\Slide;
 
 use Doctrine\ORM\Mapping as ORM;
 use Backend\Core\Engine\Authentication;
-use Common\Doctrine\Entity\Meta;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
  *
- * @ORM\Table(name="sliders_oneslide")
- * @ORM\Entity(repositoryClass="Backend\Modules\EnerSliders\Domain\OneSlide\OneSlideRepository")
+ * @ORM\Table(name="sliders_slide")
+ * @ORM\Entity(repositoryClass="Backend\Modules\EnerSliders\Domain\Slide\SlideRepository")
  */
 
-class OneSlide
+class Slide
 {
     /**
      * @var integer
@@ -59,10 +58,10 @@ class OneSlide
      *
      * @ORM\ManyToOne(
      *     targetEntity="Backend\Modules\EnerSliders\Domain\Pagesliders\Pagesliders",
-     *     inversedBy="oneslide"
+     *     inversedBy="Slide"
      * )
      * @ORM\JoinColumn(
-     *     name="oneslide_id",
+     *     name="Slide_id",
      *     referencedColumnName="id",
      *     onDelete="cascade"
      * )
@@ -74,10 +73,10 @@ class OneSlide
      *
      * @ORM\ManyToOne(
      *     targetEntity="Backend\Modules\EnerSliders\Domain\Products\Product",
-     *     inversedBy="oneslidep"
+     *     inversedBy="Slidep"
      * )
      * @ORM\JoinColumn(
-     *     name="oneslidep_id",
+     *     name="Slidep_id",
      *     referencedColumnName="id",
      *     onDelete="cascade"
      * )
@@ -89,10 +88,10 @@ class OneSlide
      *
      * @ORM\ManyToOne(
      *     targetEntity="Backend\Modules\EnerSliders\Domain\Ament\Amenties",
-     *     inversedBy="oneslidea"
+     *     inversedBy="Slidea"
      * )
      * @ORM\JoinColumn(
-     *     name="oneslidea_id",
+     *     name="Slidea_id",
      *     referencedColumnName="id",
      *     onDelete="cascade"
      * )

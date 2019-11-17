@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\EnerSliders\Domain\EnerSlide;
+namespace Backend\Modules\EnerSliders\Domain\Slide;
 
 use Symfony\Component\Form\AbstractType;
 //use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -22,7 +22,7 @@ use Symfony\Component\Form\FormEvents;
 use Common\Form\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class OneSlideType extends AbstractType
+class SlideType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -46,7 +46,7 @@ class OneSlideType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => OneSlide::class,
+            'data_class' => Slide::class,
         ));
     }
 

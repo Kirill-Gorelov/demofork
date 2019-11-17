@@ -1,23 +1,23 @@
 <?php
 
-namespace Backend\Modules\EnerSliders\Domain\EnerSlide;
+namespace Backend\Modules\EnerSliders\Domain\Slide;
 
 use Doctrine\ORM\EntityRepository;
 
-class OneSlideRepository extends EntityRepository
+class SlideRepository extends EntityRepository
 {
     public function update()
     {
         $this->getEntityManager()->flush();
     }
 
-    public function add(OneSlide $oneslide)
+    public function add(Slide $oneslide)
     {
         $this->getEntityManager()->persist($oneslide);
         $this->getEntityManager()->flush();
     }
 
-    public function delete(OneSlide $oneslide): void
+    public function delete(Slide $oneslide): void
     {
         $this->getEntityManager()->remove($oneslide);
         $this->getEntityManager()->flush();

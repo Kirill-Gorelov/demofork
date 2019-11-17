@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\EnerSliders\Domain\EnerSlide;
+namespace Backend\Modules\EnerSliders\Domain\Slide;
 
 use Backend\Core\Engine\DataGridDatabase;
 use Backend\Core\Engine\TemplateModifiers;
@@ -13,13 +13,13 @@ use Backend\Core\Language\Locale;
 /**
  * @TODO replace with a doctrine implementation of the data grid
  */
-class OneSlideDataGrid extends DataGridDatabase
+class SlideDataGrid extends DataGridDatabase
 {
     public function __construct(Locale $locale)
     {
         parent::__construct(
             'SELECT i.id, i.title
-             FROM sliders_oneslide AS i
+             FROM sliders_slide AS i
              WHERE 1',
             ['language' => $locale]
         );
@@ -36,7 +36,7 @@ class OneSlideDataGrid extends DataGridDatabase
 
         // check if this action is allowed
         if (BackendAuthentication::isAllowedAction('Edit')) {
-            $editUrl = Model::createUrlForAction('oneslide_edit', null, null, ['id' => '[id]'], false);
+            $editUrl = Model::createUrlForAction('slide_edit', null, null, ['id' => '[id]'], false);
             $this->setColumnURL('title', $editUrl);
             $this->addColumn('edit', null, Language::lbl('Edit'), $editUrl, Language::lbl('Edit'));
 
