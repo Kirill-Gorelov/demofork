@@ -96,7 +96,7 @@ class SliderType extends AbstractType
         )->add('id',
             TextType::class,
             [
-                'label' => 'ID баннера',
+                'label' => 'ID слайдера',
                 'empty_data' => false,
                 'disabled' => true,
                 'required' => false,
