@@ -86,14 +86,14 @@ class Edit extends BackendBaseActionEdit {
             return;
         }
 
-        // $sliders = $this->product->getOneslidep();
-        // // dump($sliders);
-        // // die;
-        // if (!empty($sliders)){
-        //     foreach ($sliders as $slide) {
-        //         $slide->setProduct($this->product);
-        //     }
-        // }
+        $sliders = $this->slider->getSlide();
+        if (!empty($sliders)){
+            foreach ($sliders as $slide) {
+                // var_dump($slide);
+                // die;
+                $slide->setPagesliders($this->slider);
+            }
+        }
 
         $this->get('doctrine')->getRepository(Slider::class)->update();
         $this->redirect(BackendModel::createUrlForAction('Index'));
