@@ -19,6 +19,7 @@ use Backend\Form\Type\MetaType;
 use Backend\Core\Engine\Model;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Backend\Modules\EnerSliders\Domain\OneSlide\OneSlideType;
 
 use Common\Form\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -102,6 +103,18 @@ class SliderType extends AbstractType
                 'required' => false,
             ]
         ); 
+
+        $builder->add('oneslide', CollectionType::class, [
+            'entry_type' => OneSlideType::class,
+            'by_reference' => false,
+            //'entry_options' => ['label' => false],
+            'allow_add' => true,
+            'allow_delete' => true,
+            'allow_sequence' => false,
+            'required' => false,
+            'label' => 'Слайды',
+            //'profession' => $options['data'],
+        ]);
 
     }
 

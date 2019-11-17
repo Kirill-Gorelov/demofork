@@ -5,6 +5,7 @@ use Common\ModuleExtraType;
 use Backend\Core\Engine\Model;
 use Backend\Core\Installer\ModuleInstaller;
 use Backend\Modules\EnerSliders\Domain\Sliders\Slider;
+use Backend\Modules\EnerSliders\Domain\EnerSlide\OneSlide;
 
 final class Installer extends ModuleInstaller
 {
@@ -45,6 +46,7 @@ final class Installer extends ModuleInstaller
     private function configureEntities(): void
     {
         Model::get('fork.entity.create_schema')->forEntityClass(Slider::class);
+        Model::get('fork.entity.create_schema')->forEntityClass(OneSlide::class);
     }
 
 
