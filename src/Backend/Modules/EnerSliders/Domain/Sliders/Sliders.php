@@ -39,13 +39,6 @@ class Sliders
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="link", nullable=true)
-     */
-    private $link;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="text", nullable=true)
      */
     private $description = '';
@@ -58,27 +51,6 @@ class Sliders
      */
     private $active = false;
 
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image = '';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $imagemd = '';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $imagelg = '';
 
     /**
      * @var Locale
@@ -136,18 +108,9 @@ class Sliders
      */
     protected $moduleExtraId;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", name="views_count")
-     */
-    public $views_count = 0;
-
-
     public function __construct(){
         $this->locale = Locale::workingLocale();
         $this->date = new \DateTime();
-        // $this->date_views = new \DateTime();
     }
 
     /**
@@ -193,22 +156,6 @@ class Sliders
     /**
      * @return string
      */
-    public function getLink()
-    {
-        return (string)$this->link;
-    }
-
-    /**
-     * @param string $link
-     */
-    public function setLink(string $link): void
-    {
-        $this->link = $link;
-    }
-
-    /**
-     * @return string
-     */
     public function getDescription()
     {
         return (string)$this->description;
@@ -222,66 +169,6 @@ class Sliders
         $this->description = $description;
     }
 
-
-    /**
-     * @return string
-     */
-    public function getImage(): string
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param string $image
-     */
-    //public function setImage(string $image): void
-    public function setImage($image): void
-    {
-        if(!$image){
-            $image = '';
-        }
-        $this->image = $image;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageLg(): string
-    {
-        return $this->imagelg;
-    }
-
-    /**
-     * @param string $imagelg
-     */
-    public function setImageLg($imagelg): void
-    {
-        if(!$imagelg){
-            $imagelg = '';
-        }
-        $this->imagelg = $imagelg;
-    }
-
-    public function getImageMd(): string
-    {
-        return $this->imagemd;
-    }
-
-    /**
-     * @param string $imagemd
-     */
-    public function setImageMd($imagemd): void
-    {
-        if(!$imagemd){
-            $imagemd = '';
-        }
-        $this->imagemd = $imagemd;
-    }
-
-    public function getImageMb(): string
-    {
-        return $this->imagemb;
-    }
 
     public function getCreatorUserId()
     {   
