@@ -108,6 +108,17 @@ class Slider
      */
     protected $moduleExtraId;
 
+     /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="Backend\Modules\EnerSliders\Domain\Slides\Slide",
+     *     cascade="persist",
+     *     mappedBy="pagesliders"
+     * )
+     */
+    private $slide;
+
     public function __construct(){
         $this->locale = Locale::workingLocale();
         $this->date = new \DateTime();
@@ -281,6 +292,21 @@ class Slider
     public function getModuleExtraId(): int
     {
         return $this->moduleExtraId;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getSlide()
+    {
+        return $this->slide;
+    }
+    /**
+     * @param Collection $slide
+     */
+    public function setSlide(Collection $slide): void
+    {
+        $this->slide = $slide;
     }
 
     /**

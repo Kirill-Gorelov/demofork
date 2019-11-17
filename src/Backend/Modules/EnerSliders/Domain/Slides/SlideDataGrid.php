@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\EnerSliders\Domain\Slide;
+namespace Backend\Modules\EnerSliders\Domain\Slides;
 
 use Backend\Core\Engine\DataGridDatabase;
 use Backend\Core\Engine\TemplateModifiers;

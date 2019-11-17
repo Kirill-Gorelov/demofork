@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\EnerSliders\Domain\Slide;
+namespace Backend\Modules\EnerSliders\Domain\Slides;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Backend\Modules\EnerSliders\Domain\Slide;
+namespace Backend\Modules\EnerSliders\Domain\Slides;
 
 use Doctrine\ORM\Mapping as ORM;
 use Backend\Core\Engine\Authentication;
@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  *
  * @ORM\Table(name="sliders_slide")
- * @ORM\Entity(repositoryClass="Backend\Modules\EnerSliders\Domain\Slide\SlideRepository")
+ * @ORM\Entity(repositoryClass="Backend\Modules\EnerSliders\Domain\Slides\SlideRepository")
  */
 
 class Slide
@@ -54,14 +54,13 @@ class Slide
     private $image = '';
 
     /**
-     * @var Pagesliders
      *
      * @ORM\ManyToOne(
-     *     targetEntity="Backend\Modules\EnerSliders\Domain\Pagesliders\Pagesliders",
-     *     inversedBy="Slide"
+     *     targetEntity="Backend\Modules\EnerSliders\Domain\Sliders\Slider",
+     *     inversedBy="slide"
      * )
      * @ORM\JoinColumn(
-     *     name="Slide_id",
+     *     name="slide_id",
      *     referencedColumnName="id",
      *     onDelete="cascade"
      * )

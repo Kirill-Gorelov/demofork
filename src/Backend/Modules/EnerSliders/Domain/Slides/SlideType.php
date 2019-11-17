@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Modules\EnerSliders\Domain\Slide;
+namespace Backend\Modules\EnerSliders\Domain\Slides;
 
 use Symfony\Component\Form\AbstractType;
 //use Symfony\Component\Form\Extension\Core\Type\CollectionType;
