@@ -5,3 +5,9 @@ services:
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments:
             - Backend\Modules\EnerSliders\Domain\Sliders\Slider
+    mshop_products.repository.slides:
+        class: Backend\Modules\EnerSliders\Domain\Slides\SlideRepository
+        public: true
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - Backend\Modules\EnerSliders\Domain\Slides\Slide
