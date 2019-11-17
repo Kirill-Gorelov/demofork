@@ -66,6 +66,7 @@
 
       <div role="tabpanel" class="tab-pane" id="picture">
           <div class="row">
+              {{ form_row(form.slide) }}
           </div>
         </div>
 
@@ -79,10 +80,8 @@
               {% endif %}
                 {{ form_row(form.editor_user_id) }}
                 <hr>
-
                 {{ form_row(form.date) }}
                 {{ form_row(form.edited_on) }}
-                
                 <hr>
             </div>
           </div>
