@@ -1,11 +1,11 @@
 <?php
 
-namespace Frontend\Modules\EnerBanners\Widgets;
+namespace Frontend\Modules\EnerSliders\Widgets;
 
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
-use Backend\Modules\EnerBanners\Domain\Banners\Banner;
+use Backend\Modules\EnerSliders\Domain\Sliders\Slider;
 
-class Banners extends FrontendBaseWidget
+class Sliders extends FrontendBaseWidget
 {
     private $tpl;
     private $banner;
@@ -19,13 +19,13 @@ class Banners extends FrontendBaseWidget
     }
 
     public function parse(){
-        $this->template->assign('banner', $this->banner);
+        $this->template->assign('slider', $this->banner);
     }
 
     public function loadData() {
         if(intval($this->data['gallery_id']) != 0){
-            $this->banner = $this->get('doctrine')->getRepository(Banner::class)->getBanner($this->data['gallery_id']);
-            $this->tpl = '/EnerBanners/Layout/Widgets/'.$this->banner->tpl;
+            $this->banner = $this->get('doctrine')->getRepository(Slider::class)->getBanner($this->data['gallery_id']);
+            $this->tpl = '/EnerSliders/Layout/Widgets/'.$this->banner->tpl;
         }else{
             $this->banner = '';
             $this->tpl = '';

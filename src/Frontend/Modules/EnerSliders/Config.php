@@ -1,6 +1,6 @@
 <?php
 
-namespace Frontend\Modules\EnerBanners;
+namespace Frontend\Modules\EnerSliders;
 
 use Frontend\Core\Engine\Base\Config as FrontendBaseConfig;
 
