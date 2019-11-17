@@ -34,12 +34,25 @@ class SlideType extends AbstractType
                 'label' => 'Сортировка',
                 'empty_data' => false
             ]
+        )->add('active',
+            CheckboxType::class,
+            [
+                'label' => 'Активно',
+                'empty_data' => false
+            ]
         )->add('title',
             TextType::class,
             [
                 'label' => 'Заголовок',
                 'empty_data' => false
             ]
+        )->add('link',
+            TextType::class,
+            [
+                'label' => 'Ссылка',
+                'empty_data' => false
+            ]
+
         )->add('image',
             TextType::class,
             [

@@ -92,7 +92,7 @@ class SliderType extends AbstractType
             'by_reference' => false,
             'placeholder' => 'Выбрать шаблон',
             'required' => true,
-            'label' => 'Шаблон баннера',
+            'label' => 'Шаблон слайдера',
         ]
         )->add('id',
             TextType::class,
