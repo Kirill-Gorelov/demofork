@@ -3,16 +3,10 @@
   <Backend>
     <Core>
       <item type="label" name="EnerSliders">
-        <translation language="ru"><![CDATA[Баннеры]]></translation>
+        <translation language="ru"><![CDATA[Слайдеры]]></translation>
       </item>
       <item type="label" name="Sliders">
-        <translation language="ru"><![CDATA[Список баннеров]]></translation>
-      </item>
-      <item type="label" name="Pictirebanners">
-        <translation language="ru"><![CDATA[Изображение]]></translation>
-      </item>
-      <item type="label" name="Informationbanners">
-        <translation language="ru"><![CDATA[Информация]]></translation>
+        <translation language="ru"><![CDATA[Список слайдеров]]></translation>
       </item>
     </Core>
   </Backend>
