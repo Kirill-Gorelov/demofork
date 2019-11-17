@@ -28,7 +28,7 @@ class Edit extends BackendBaseActionEdit {
     {
         $form = $this->createForm(
             SliderType::class,
-            $this->Slider
+            $this->slider
         );
 
         // var_dump($form);
@@ -74,7 +74,7 @@ class Edit extends BackendBaseActionEdit {
 
         $this->id = $this->getRequest()->get('id');
 
-        $this->loadBanner();
+        $this->loadSlider();
 
         $form = $this->getForm();
         // dump($form);

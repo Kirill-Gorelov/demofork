@@ -14,7 +14,7 @@ use Common\ModuleExtraType;
 /**
  *
  * @ORM\Table(name="sliders")
- * @ORM\Entity(repositoryClass="Backend\Modules\EnerSliders\Domain\Sliders\SlidersRepository")
+ * @ORM\Entity(repositoryClass="Backend\Modules\EnerSliders\Domain\Sliders\SliderRepository")
  * @ORM\HasLifecycleCallbacks
  */
 
@@ -122,6 +122,7 @@ class Slider
     public function __construct(){
         $this->locale = Locale::workingLocale();
         $this->date = new \DateTime();
+        $this->slide = new ArrayCollection();
     }
 
     /**
