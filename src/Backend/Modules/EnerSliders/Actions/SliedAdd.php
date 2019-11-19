@@ -3,8 +3,8 @@
 namespace Backend\Modules\EnerSliders\Actions;
 
 use Backend\Core\Engine\Base\ActionAdd as BackendBaseActionAdd;
-use Backend\Modules\EnerSliders\Domain\Sliders\Slider;
-use Backend\Modules\EnerSliders\Domain\Sliders\SliderType;
+use Backend\Modules\EnerSliders\Domain\Slides\Slide;
+use Backend\Modules\EnerSliders\Domain\Slides\SlideType;
 
 use Symfony\Component\Form\Form;
 use Backend\Core\Engine\Model as BackendModel;
@@ -13,14 +13,14 @@ use Backend\Core\Engine\Model as BackendModel;
  * Контроллер добавления товара
  */
 
-class Add extends BackendBaseActionAdd
+class SlideAdd extends BackendBaseActionAdd
 {
 
     private function getForm(): Form
     {
         $form = $this->createForm(
-            SliderType::class,
-            new Slider()
+            SlideType::class,
+            new Slide()
         );
 
         $form->handleRequest($this->getRequest());
@@ -43,14 +43,14 @@ class Add extends BackendBaseActionAdd
         // dump($Slider);
         // die;
 
-        $oneslide = $slider->getSlide();
-        if (!empty($oneslide)){
-            foreach ($oneslide as $slide) {
-                // var_dump($slider);
-                // die;
-                $slide->setPagesliders($slider);
-            }
-        }
+        // $oneslide = $slider->getSlide();
+        // if (!empty($oneslide)){
+        //     foreach ($oneslide as $slide) {
+        //         // var_dump($slider);
+        //         // die;
+        //         $slide->setPagesliders($slider);
+        //     }
+        // }
 
         // var_dump($slider);
         // die;
@@ -71,6 +71,6 @@ class Add extends BackendBaseActionAdd
         }
 
         $this->createSlider($form);
-        $this->redirect(BackendModel::createUrlForAction('Index'));
+        // $this->redirect(BackendModel::createUrlForAction('Index'));
     }
 }

@@ -24,7 +24,7 @@ class Sliders extends FrontendBaseWidget
 
     public function loadData() {
         if(intval($this->data['gallery_id']) != 0){
-            $this->banner = $this->get('doctrine')->getRepository(Slider::class)->getBanner($this->data['gallery_id']);
+            $this->banner = $this->get('doctrine')->getRepository(Slider::class)->getSlider($this->data['gallery_id']);
             $this->tpl = '/EnerSliders/Layout/Widgets/'.$this->banner->tpl;
         }else{
             $this->banner = '';

@@ -1,4 +1,8 @@
 
-{% if banner %}
-    <img src="{{ banner.image }}" width="250">
+{% if slider %}
+{{ slider.title }}
+{{ slider.description|raw }}
+{% for slide in slider %}
+    {{slide.title}}
+{% endfor %}
 {% endif %}

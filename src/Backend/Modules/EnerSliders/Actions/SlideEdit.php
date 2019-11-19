@@ -4,15 +4,15 @@ namespace Backend\Modules\EnerSliders\Actions;
 
 use Symfony\Component\Form\Form;
 use Backend\Core\Engine\Model as BackendModel;
-use Backend\Modules\EnerSliders\Domain\Sliders\Slider;
-use Backend\Modules\EnerSliders\Domain\Sliders\SliderType;
-use Backend\Modules\EnerSliders\Domain\Sliders\SliderDelType;
+use Backend\Modules\EnerSliders\Domain\Slides\Slide;
+use Backend\Modules\EnerSliders\Domain\Slides\Slideype;
+use Backend\Modules\EnerSliders\Domain\Slides\SlideelType;
 use Backend\Core\Engine\Base\ActionEdit as BackendBaseActionEdit;
 
 /*
  * Контроллер редактирования
  */
-class Edit extends BackendBaseActionEdit {
+class SlideEdit extends BackendBaseActionEdit {
 
     protected $id;
 
@@ -20,15 +20,14 @@ class Edit extends BackendBaseActionEdit {
 
     private function loadSlider(): void
     {
-        $this->slider = $this->get('doctrine')->getRepository(Slider::class)->findOneById($this->id);
-        // var_dump($this->slider);
-        // die;
+        $this->slider = $this->get('doctrine')->getRepository(Slide::class)->findOneById($this->id);
+
     }
 
     private function getForm(): Form
     {
         $form = $this->createForm(
-            SliderType::class,
+            SlideType::class,
             $this->slider
         );
 
@@ -54,7 +53,7 @@ class Edit extends BackendBaseActionEdit {
     private function loadDeleteForm(): void
     {
         $deleteForm = $this->createForm(
-            SliderDelType::class,
+            SlideDelType::class,
             ['id' => $this->id],
             ['module' => $this->getModule()]
         );
@@ -87,16 +86,16 @@ class Edit extends BackendBaseActionEdit {
             return;
         }
 
-        $sliders = $this->slider->getSlide();
-        if (!empty($sliders)){
-            foreach ($sliders as $slide) {
-                // var_dump($slide);
-                // die;
-                $slide->setPagesliders($this->slider);
-            }
-        }
+        // $sliders = $this->slider->getSlide();
+        // if (!empty($sliders)){
+        //     foreach ($sliders as $slide) {
+        //         // var_dump($slide);
+        //         // die;
+        //         $slide->setPagesliders($this->slider);
+        //     }
+        // }
 
-        $this->get('doctrine')->getRepository(Slider::class)->update();
+        $this->get('doctrine')->getRepository(Slide::class)->update();
         $this->redirect(BackendModel::createUrlForAction('Index'));
     }
 

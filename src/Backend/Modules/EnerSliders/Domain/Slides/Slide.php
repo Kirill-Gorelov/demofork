@@ -41,9 +41,9 @@ class Slide
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer", name="sort", nullable=true)
+     * @ORM\Column(type="integer", name="sort")
      */
-    private $sort;
+    private $sort = 0;
 
 
     /**
@@ -69,13 +69,14 @@ class Slide
     private $link;
 
     /**
+     * @var Slider
      *
      * @ORM\ManyToOne(
      *     targetEntity="Backend\Modules\EnerSliders\Domain\Sliders\Slider",
      *     inversedBy="slide"
      * )
      * @ORM\JoinColumn(
-     *     name="slide_id",
+     *     name="slider_id",
      *     referencedColumnName="id",
      *     onDelete="cascade"
      * )

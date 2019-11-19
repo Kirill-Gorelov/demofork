@@ -38,7 +38,7 @@ class SlideType extends AbstractType
             CheckboxType::class,
             [
                 'label' => 'Активно',
-                'empty_data' => false
+                'required' => false,
             ]
         )->add('title',
             TextType::class,

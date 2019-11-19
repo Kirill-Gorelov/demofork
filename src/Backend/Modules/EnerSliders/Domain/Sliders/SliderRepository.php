@@ -35,8 +35,6 @@ class SliderRepository extends EntityRepository
 
         if (!empty($rez)) {
             $rez = $rez[0]; //TODO: или ????
-            // $rez = end($rez);
-            $count = $rez->views_count + 1;
             return $rez;
         }
 
